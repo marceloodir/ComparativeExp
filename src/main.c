@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <time.h>
 
-unsigned long expRec(int valor, int potencia) {
+double expRec(int valor, int potencia) {
 
 	if(potencia==0)
 		return 1;
@@ -22,8 +22,8 @@ unsigned long expRec(int valor, int potencia) {
 	}
 }
 
-unsigned long expDefault(int valor, int potencia) {
-	unsigned long saida;
+double expDefault(int valor, int potencia) {
+	double saida;
 	int i;
 
 	if(potencia==0)
@@ -41,19 +41,19 @@ unsigned long expDefault(int valor, int potencia) {
 
 int main(int argc, char **argv) {
 	int valor = 2;
-	int potencia = 63;
-	unsigned long resultado;
+	int potencia = 10000;
+	double resultado;
 	double tempo01, tempo02,ini;
 
 	ini = clock();
 	resultado  = expRec(valor,potencia);
 	tempo01 = (clock() - ini) * 1000.0 / CLOCKS_PER_SEC;
-	printf("Modo RECURSIVO resultado: %lu, tempo de execução: %f\n",resultado,tempo01);
+	printf("Modo RECURSIVO resultado: %.0lf, \ntempo de execução: %lf\n\n",resultado,tempo01);
 
 	ini = clock();
 	resultado  = expDefault(valor,potencia);
 	tempo02 = (clock() - ini) * 1000.0 / CLOCKS_PER_SEC;
-	printf("Modo INTERATIVO resultado: %lu, tempo de execução: %f",resultado,tempo02);
+	printf("Modo INTERATIVO resultado: %.0lf, \ntempo de execução: %lf",resultado,tempo02);
 	return EXIT_SUCCESS;
 }
 
